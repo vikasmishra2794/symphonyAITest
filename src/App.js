@@ -52,7 +52,8 @@ class App extends Component {
         <button onClick={this.handleUpload}>Upload</button>
       </form>}
       {isFileUploaded && <div className="table-container">
-          <label>
+        <div className="filter">  
+        <label className="filter-child">
           Delimiter:
           <input type="text" name="delimiter" onChange={this.handleInputChange} value={delimiter}/>
         </label>
@@ -60,6 +61,7 @@ class App extends Component {
           Lines:
           <input type="text" name="lines" onChange={this.handleInputChange} value={lines}/>
           </label>
+          </div>
         <table className="table">
           <tbody>
         {tableData.map((line, index) => {
