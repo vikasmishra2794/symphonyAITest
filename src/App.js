@@ -25,7 +25,7 @@ class App extends Component {
     const data = new FormData();
     data.append('file', this.state.selectedFile, this.state.selectedFile.name);
     axios.post('http://localhost:8080/upload', data).then((res) => {
-      const { data: { fileData }, statusText } = res;
+      const { data: { fileData = [] } } = res;
       this.setState({ fileData, isFileUploaded: true });
     });
   };
@@ -61,6 +61,7 @@ class App extends Component {
           <input type="text" name="lines" onChange={this.handleInputChange} value={lines}/>
           </label>
         <table className="table">
+          <tbody>
         {tableData.map((line, index) => {
           const colums = line.split(delimiter);
           return <tr key={index}>
@@ -71,6 +72,7 @@ class App extends Component {
           </tr>
         })
         }
+        </tbody>    
         </table>
       </div>
       }
